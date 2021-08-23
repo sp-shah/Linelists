@@ -1,0 +1,18 @@
+import numpy as np
+import pandas
+
+
+
+
+def read():
+    f = pandas.read_table('/home/shivani/rprocess/lineLists/Roederer-HD222925-ncap-linelist.txt', delim_whitespace=True, 
+                          header=None,
+                          skiprows = 22,
+                          usecols = range(4),
+                          engine='python',
+                          names = ["elem", "wav", "expot", "loggf"])
+
+    print(f)
+
+if __name__ == "__main__":
+    read()
