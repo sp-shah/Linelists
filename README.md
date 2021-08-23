@@ -1,7 +1,4 @@
 # Linelists
-
-test
-
 Description of the contents of the folder:
 Code:
 Adapted from Alex's code (https://www.dropbox.com/sh/6ffhe6uowd1qhmj/AAB3z2YCJrmr_iHykl4rQuoQa?dl=0) 
