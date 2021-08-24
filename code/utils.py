@@ -404,6 +404,9 @@ def element_to_species(element_repr):
 
 
 def element_to_species_my(element_repr):
+    #Added by S.S. Adapted from element_to_species
+    #spits out both the species and the name of the element since that is what I need
+    #also takes into consideration some of the molecules
     """ Converts a string representation of an element and its ionization state
     to a floating point
     This specifically for my make_linelist code"""
@@ -415,14 +418,16 @@ def element_to_species_my(element_repr):
         element, ionization = element_repr[:-2], element_repr[-2:]
     elif element_repr.count("I") == 1:
         element, ionization = element_repr[:-1], element_repr[-1]
+    elif element_repr.count("-") == 1:
+        element = element_repr.replace("-", "")
     else:
         raise TypeError("element format wrong")
-    
+
     if element not in periodic_table:
         try:
-            return common_molecule_name2species[element]
+            return common_molecule_name2species[element_repr], element
         except KeyError:
-            # Don't know what this element is
+            print("Don't know what this element")
             return float(element_repr)
     
     ionization = max([0, ionization.upper().count("I") - 1]) /10.

@@ -1,0 +1,15 @@
+All the elements that should be synthesized according to Ian’s list:Li I, Sc II, V I, V II, Mn I, Mn II, Co I, Cu I, Rb I, Sr I, Sr II, Y II, Zr II, Nb II, Mo I, Ru I, Rh I, Pd I, Ag I, Ba II, La II, Ce II, Pr II, Nd II, SmII, Eu II, Gd II, Tb II, Dy II, Ho II, Er II, Tm II, Yb II, Lu II, Hf II, Os I, Ir I, Pb I, Th II, U II
+
+Already added: Li, C-C, C-N, Ba, Eu, C-H, Nd, Pb, Sm, Yb
+
+Adding isotopes manually: Rb, Sr (probably not needed), Zr, Mo, Ru, Pd, Ag, Ce, Gd, Dy, Er, Yb, Lu, Hf, Os, Ir, U
+
+Checked but not needed: Yr, Nb, Rh, La, Pr, Tb, Ho, Tm, Th
+
+Elements in S5 Master List:Sc, Mn, CH, Al, V, Co, Sr, Y, Zr, Ba, La, Dy, Eu, CN
+
+Elements not in S5 Master List (not considering ionization states so far):Li, Co, Rb,Rh, NbMo, Ru, Pd, Ag, Ce, Pr Nd, Sm, Gd, Tb, Ho, Er, Tm, Yb, Lu II, Hf II, Os I, Ir I, Pb I, Th II, U II
+
+Elements deleted after refresh: Lu, Os, Hf, Ir, Nb
+
+Final elements in the session after error was resolved: Li, CH, CC, CN, Cu, Rb, Sr, Zr, Mo, Ru, Pd, Ag, Ba, Ce, Nd, Sm, Eu, Gd, Dy, Er, Yb, Pb, U (draft2.smh)

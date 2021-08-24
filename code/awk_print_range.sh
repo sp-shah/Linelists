@@ -17,4 +17,4 @@ fi
 
 echo $3
 #awk -v wllo=$1 -v wlhi=$2 '$1>=wllo && $1 <=wlhi {print}' master_mol_list.moog
-awk -v wllo=$1 -v wlhi=$2 '$1>=wllo && $1 <=wlhi {print}' super_master_list.moog
+awk -v wllo=$1 -v wlhi=$2 '$1>=wllo && $1 <=wlhi {print}' ~/shahlabtools/shahgithub/linemake/super_master_list.moog

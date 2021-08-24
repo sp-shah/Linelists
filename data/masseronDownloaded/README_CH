@@ -1,0 +1,10 @@
+linelist version: 1st October 2014
+
+reference: "CH in stellar atmospheres: an extensive linelist"
+Masseron, T., Plez, B., Van Eck, S., Colin, R., Daoutidis, I., Godefroid, M., Coheur, P.-F., Bernath, P., Jorissen, A., and Christlieb, N.
+2014, A&A, 571, 47  
+
+Following the formula $ln(Q)=\sum_0^2 a_i ln(T)^i$, the recommended coefficients for the partition function are $a_0 = 11.00608809, a_1=-2.68892131$ and $a_2=0.27091654$.
+
+dissociation energy recommended
+CH  3.466 eV (Kumar et al. 1997  JCP 109, 10, 3824)   
