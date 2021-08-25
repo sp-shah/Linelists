@@ -497,6 +497,39 @@ def species_to_element(species):
     return "%s %s" % (element, "I" * ionization)
 
 
+def species_to_element_my(species):
+    ##Added by SS. Same as species_to_element, except for that the element is
+    #returned with no space between the element and the ionization state
+    """ Converts a floating point representation of a species to a string
+    representation of the element and its ionization state """
+    
+    if not isinstance(species, (float, int)):
+        raise TypeError("species must be represented by a floating point-type")
+    
+    if round(species,1) != species:
+        # Then you have isotopes, but we will ignore that
+        species = int(species*10)/10.
+
+    if species + 1 >= len(periodic_table) or 1 > species:
+        # Don"t know what this element is. It"s probably a molecule.
+        try:
+            elems = common_molecule_species2elems[species]
+            return "-".join(elems)
+        except KeyError:
+            # No idea
+            return str(species)
+        
+    atomic_number = int(species)
+    element = periodic_table[int(species) - 1]
+    ionization = int(round(10 * (species - int(species)) + 1))
+
+    # The special cases
+    if element in ("C", "H", "He"): return element
+    return "%s%s" % (element, "I" * ionization)
+
+
+
+
 def elems_isotopes_ion_to_species(elem1,elem2,isotope1,isotope2,ion):
     Z1 = int(element_to_species(elem1.strip()))
     if isotope1==0: isotope1=''

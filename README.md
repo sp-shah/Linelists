@@ -10,8 +10,10 @@ Steps: (1) run make_linelists.py (2) run make_linelists.sh (3) copy over content
 
     read function in funcdef.py reads in the Roederer file (used by make_linelist.py)
     utils.py from SMHr folder adapted (added a new function) to convert element to species (used by make_linelist.py). 		
-    make_linelist.py: Creates the master list (using Roederer as the reference + additional molecular bands and UII lines that I have added manually in the script) called allMasterList.txt, which					will be compatible with SMHr
-    		      Creates the make_linelist.sh file that can be implemented to create the linelists, which are stored in myAll folder
+    make_linelist.py: Creates the master list (using Roederer as the reference + s5 master lists + CH bands customized to have large wav range) called allMasterList.txt, which
+    		      will be compatible with SMHr
+    		      Creates the make_linelist.sh file that can be implemented to create the linelists, which are stored in myAll folder. This might have some elements repeated.
+		      It would be nice to clean this up.
     super_master_list.moog: it is all synthesis lists created by linemake concatenated  to make one big list. Used by awk_print_range.sh. This is imported from linemake folder, forked from APJ's.
     			    Confirm that you have either the latest or the most stable version.
     awk_print_range.sh used by make_linelists.sh for obtaining the lines in specified wavelength ranges
@@ -19,9 +21,11 @@ Steps: (1) run make_linelists.py (2) run make_linelists.sh (3) copy over content
 
    
 
-myAll folder: consists of all the linelists (following Roederer n-cap) 
-myAllULines folder: Should be same as myAll folder except for following changes:
+--> removed -- myAll folder: consists of all the linelists (following Roederer n-cap) 
+--> removed -- myAllULines folder: Should be same as myAll folder except for following changes:
 	    Change made to the logg value of La line at 4050. Value changed to 0.428 following this source: https://ui.adsabs.harvard.edu/abs/1996MNRAS.278..997B/abstract 
+synULines folder: consists of all the linelists including IUR and the s5 lists. The La 4050 loggf *should* be fixed in this folder. Therefore, exclusively using this folder
+	  	  for ULines project for now.
 
 data:
 one place for all the data
@@ -38,3 +42,9 @@ one place for all the data
     chmasseron_fixed.moog: Masseron CH lines fixed by APJ in the MOOG format
     chmasseron_fixed_edited.moog: Masseron CH lines fixed by APJ, wavelength region trimmed by SS
     synthesisInfo.txt: Info on elements to synthesis, recommended steps, isotopic ratios to include/remove etc.,
+    myAllOld folder: consists of all the linelists (following Roederer n-cap) before the Masseron CH was corrected.
+
+
+To Do:
+- Currently performing a cheap trick to include s5 master and IUR lists, therefore, have repeated lines. Find a way to clean this up
+- Maybe create a new EW linelist from the current RPA linelist to only include those elements that will be fit using EW analysis.

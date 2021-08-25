@@ -8,11 +8,26 @@ import utils
 import sys
 from pandas import Series as pdS
 
-base_path  = "/home/shivani/rprocess/Linelists/myAll"
+
+base_path  = "/home/shivani/rprocess/Linelists/synULines"
  
 def main():
     
-    ll = fd.read() #Roederer
+    iur = fd.read() #Roederer
+    wav = iur["wav"] #panda series
+    elemAr = iur["elem"]
+    expotAr = iur["expot"]
+    loggfAr = iur["loggf"]
+
+    #s5 master and s5 extra master list
+    #hack:some of the elements from s5 master and s5 master extra will be the same as in roederer.
+    #but don't care about that since they will just be rewritten, just need to include the extra
+    #lines for now
+    #maybe fix this in future
+    wavs5, speciess5, expots5, loggfs5 = fd.reads5()
+    elems5 = [utils.species_to_element_my(spe) for spe in speciess5]
+  
+    
     fp1 = open("../data/allMasterList.txt", "w")
     fp1.write("wavelength, species, expot, loggf, type, filename\n")
     fmt1 = "{:7.2f}, {:>5.1f}, {:>+6.2f}, {:>+6.2f}, syn, {}\n"
@@ -20,25 +35,27 @@ def main():
     fp2.write(r"#!/bin/bash"+"\n")
     fmt2 = "./awk_print_range.sh {} {} {} > {}\n"
     dwave = 5
-    wav = ll["wav"] #panda series
-    elemAr = ll["elem"]
-    expotAr = ll["expot"]
-    loggfAr = ll["loggf"]
+   
 
     ##I am sure there is a reason I am using pandas to read the file. Can't remember what it is.
     ##But here is a long-drawn-out way to append new elements to the Roederer list
     
     #Adding other molecular band and other elements
     #To do: Create a file for these
-    wavExt = pdS(data = [4313.0, 4323.0, 3876.0, 4217.0, 4225.0, 4237.0, 4371.0, 5165.0, 4737.0, 4940.0, 4050., 4090.0, 3986.0])
-    elemExt = pdS(data = ["C-H", "C-H", "C-N", "C-H", "C-H", "C-H", "C-H", "C-H", "C-H", "C-H", "UII", "UII", "UII"]) #check this
-    exportExt = pdS( data = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 0.0, 0.217, 0.652])
-    loggfExt = pdS( data = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,-0.713, -0.377, -0.165])
+    wavExt = pdS(data = [ 4050., 4090.0, 3986.0])
+    elemExt = pdS(data = ["UII", "UII", "UII"]) #check this
+    expotExt = pdS( data = [ 0.0, 0.217, 0.652])
+    loggfExt = pdS( data = [-0.713, -0.377, -0.165])
 
     wav = pdS.append(wav, wavExt).values
+    wav = np.concatenate((wav, wavs5))
     elemAr = pdS.append(elemAr, elemExt).values
-    expotAr = pdS.append(expotAr, exportExt).values
+    elemAr = np.concatenate((elemAr, elems5))
+    expotAr = pdS.append(expotAr, expotExt).values
+    expotAr = np.concatenate((expotAr, expots5))
     loggfAr = pdS.append(loggfAr, loggfExt).values
+    loggfAr = np.concatenate((loggfAr, loggfs5))
+
     
     for row in range(len(wav)):
         wave = wav[row]
@@ -69,7 +86,21 @@ def main():
         #writing to the sh file to create the linelist
         comment = "None"
         fp2.write(fmt2.format(roundwave-dwave, roundwave+dwave, comment, base_path + "/" + name))
-    
+
+    #write out some of the CH bands if they require a different range of wavelengths
+    fp1.write(fmt1.format(4313, 106.0, np.nan, np.nan, base_path + "/CH4313.moog"))
+    fp2.write(fmt2.format(4305, 4317, "None", base_path + "/CH4313.moog"))
+    fp1.write(fmt1.format(5165, 106.0, np.nan, np.nan, base_path + "/CH5165.moog"))
+    fp2.write(fmt2.format(5160, 5170, "None", base_path + "/CH5165.moog"))
+    fp1.write(fmt1.format(4737, 106.0, np.nan, np.nan, base_path + "/CH4737.moog"))
+    fp2.write(fmt2.format(4732, 4782, "None", base_path + "/CH4737.moog"))
+    fp1.write(fmt1.format(4940, 106.0, np.nan, np.nan, base_path + "/CH4940.moog"))
+    fp2.write(fmt2.format(4935, 4945, "None", base_path + "/CH4940.moog"))
+    fp1.write(fmt1.format(4280, 106.0, np.nan, np.nan, base_path + "/CH4280.moog")) #not sure if this is supposed to be CH or C.
+    fp2.write(fmt2.format(4275, 4285, "None", base_path + "/CH4280.moog")) #writing it out as CH for now cross check
+   
+
+
     
 if __name__ == "__main__":
     main()

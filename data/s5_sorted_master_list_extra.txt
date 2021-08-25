@@ -27,8 +27,7 @@ wavelength, species, expot, loggf, type, filename
 4522.58,  63.1,  +0.21,  -0.67, syn, /home/shivani/rprocess/lineLists/my/Eu4522.moog
 6645.06,  63.1,  +1.38,  +0.12, syn, /home/shivani/rprocess/lineLists/my/Eu6645.moog
 4449.70,  66.1,  +0.00,  -1.03, syn, /home/shivani/rprocess/lineLists/my/Dy4449.moog
-
-#4217.00, 106.0,   +nan,   +nan, syn, /home/shivani/rprocess/lineLists/my/CH4217_isotopes.moog
-#4225.00, 106.0,   +nan,   +nan, syn, /home/shivani/rprocess/lineLists/my/CH4225_isotopes.moog
-#4237.00, 106.0,   +nan,   +nan, syn, /home/shivani/rprocess/lineLists/my/CH4237_isotopes.moog
-#4371.00, 106.0,   +nan,   +nan, syn, /home/shivani/rprocess/lineLists/my/CH4371_isotopes.moog
+4217.00, 106.0,   +nan,   +nan, syn, /home/shivani/rprocess/lineLists/my/CH4217_isotopes.moog
+4225.00, 106.0,   +nan,   +nan, syn, /home/shivani/rprocess/lineLists/my/CH4225_isotopes.moog
+4237.00, 106.0,   +nan,   +nan, syn, /home/shivani/rprocess/lineLists/my/CH4237_isotopes.moog
+4371.00, 106.0,   +nan,   +nan, syn, /home/shivani/rprocess/lineLists/my/CH4371_isotopes.moog
