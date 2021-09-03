@@ -98,9 +98,12 @@ def main():
     fp2.write(fmt2.format(4935, 4945, "None", base_path + "/CH4940.moog"))
     fp1.write(fmt1.format(4280, 106.0, np.nan, np.nan, base_path + "/CH4280.moog")) #not sure if this is supposed to be CH or C.
     fp2.write(fmt2.format(4275, 4285, "None", base_path + "/CH4280.moog")) #writing it out as CH for now cross check
+    fp1.write(fmt1.format(3360, 607.0, np.nan, np.nan, base_path + "/CN3360.moog"))
+    fp2.write(fmt2.format(3355, 3368, "None", base_path + "/CN3360.moog"))
+
+
    
-
-
+    
     
 if __name__ == "__main__":
     main()
