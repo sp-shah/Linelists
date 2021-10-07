@@ -988,4 +988,5 @@
 ./awk_print_range.sh 5160 5170 None > /home/shivani/rprocess/Linelists/synULines/CH5165.moog
 ./awk_print_range.sh 4732 4782 None > /home/shivani/rprocess/Linelists/synULines/CH4737.moog
 ./awk_print_range.sh 4935 4945 None > /home/shivani/rprocess/Linelists/synULines/CH4940.moog
-./awk_print_range.sh 4275 4285 None > /home/shivani/rprocess/Linelists/synULines/C4280.moog
+./awk_print_range.sh 4275 4285 None > /home/shivani/rprocess/Linelists/synULines/CH4280.moog
+./awk_print_range.sh 3355 3368 None > /home/shivani/rprocess/Linelists/synULines/CN3360.moog

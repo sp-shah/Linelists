@@ -989,3 +989,4 @@ wavelength, species, expot, loggf, type, filename
 4737.00, 106.0,   +nan,   +nan, syn, /home/shivani/rprocess/Linelists/synULines/CH4737.moog
 4940.00, 106.0,   +nan,   +nan, syn, /home/shivani/rprocess/Linelists/synULines/CH4940.moog
 4280.00, 106.0,   +nan,   +nan, syn, /home/shivani/rprocess/Linelists/synULines/CH4280.moog
+3360.00, 607.0,   +nan,   +nan, syn, /home/shivani/rprocess/Linelists/synULines/CN3360.moog
